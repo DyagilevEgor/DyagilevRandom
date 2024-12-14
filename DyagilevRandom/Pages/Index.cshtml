@@ -4,59 +4,66 @@
     ViewData["Title"] = "Randomizer";
 }
 
-<h1>Randomizer</h1>
+<div class="container">
+    <h1>Randomizer</h1>
 
-<form method="post">
-    <div>
-        <label>Выберите режим:</label>
-        <select asp-for="Randomizer.SelectedMode">
-            <option value="range">Диапазон</option>
-            <option value="list">Список</option>
-        </select>
+    <div class="gif-container">
+        <img src="URL_TO_YOUR_GIF_1" alt="GIF 1" class="gif-image" />
+        <img src="URL_TO_YOUR_GIF_2" alt="GIF 2" class="gif-image" />
     </div>
 
-    <div id="rangeInputs">
-        <label>Минимальное значение:</label>
-        <input type="number" asp-for="Randomizer.MinValue" required />
-    </div>
+    <form method="post">
+        <div>
+            <label>Выберите режим:</label>
+            <select asp-for="Randomizer.SelectedMode">
+                <option value="range" selected>Диапазон</option>
+                <option value="list">Список</option>
+            </select>
+        </div>
 
-    <div id="rangeInputs">
-        <label>Максимальное значение:</label>
-        <input type="number" asp-for="Randomizer.MaxValue" required />
-    </div>
+        <div id="rangeInputs">
+            <label>Минимальное значение:</label>
+            <input type="number" asp-for="Randomizer.MinValue" required />
+        </div>
 
-    <div id="listInputs">
-        <label>Список значений (через запятую или пробел):</label>
-        <input type="text" asp-for="Randomizer.ListInput" required placeholder="1, 2, слово1, слово2" />
-    </div>
+        <div id="rangeInputs">
+            <label>Максимальное значение:</label>
+            <input type="number" asp-for="Randomizer.MaxValue" required />
+        </div>
 
-    <input type="submit" value="Сгенерировать" />
-</form>
+        <div id="listInputs">
+            <label>Список значений (через запятую или пробел):</label>
+            <input type="text" asp-for="Randomizer.ListInput" required placeholder="1, 2, слово1, слово2" />
+        </div>
 
-@if (Model.RandomizedValue != null)
-{
-    <h2>Случайное значение: @Model.RandomizedValue</h2>
-}
+        <input type="submit" value="Сгенерировать" />
+    </form>
 
-@section Scripts {
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const modeSelect = document.querySelector('select[name="Randomizer.SelectedMode"]');
-            const rangeInputs = document.querySelectorAll('#rangeInputs');
-            const listInputs = document.querySelector('#listInputs');
+    @if (Model.RandomizedValue != null)
+    {
+        <h2>Случайное значение: @Model.RandomizedValue</h2>
+    }
 
-            function toggleInputs() {
-                if (modeSelect.value === 'range') {
-                    rangeInputs.forEach(input => input.style.display = 'block');
-                    listInputs.style.display = 'none';
-                } else {
-                    rangeInputs.forEach(input => input.style.display = 'none');
-                    listInputs.style.display = 'block';
+    @section Scripts {
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const modeSelect = document.querySelector('select[name="Randomizer.SelectedMode"]');
+                const rangeInputs = document.querySelectorAll('#rangeInputs');
+                const listInputs = document.querySelector('#listInputs');
+
+                function toggleInputs() {
+                    if (modeSelect.value === 'range') {
+                        rangeInputs.forEach(input => input.style.display = 'block');
+                        listInputs.style.display = 'none';
+                    } else {
+                        rangeInputs.forEach(input => input.style.display = 'none');
+                        listInputs.style.display = 'block';
+                    }
                 }
-            }
 
-            modeSelect.addEventListener('change', toggleInputs);
-            toggleInputs(); // Устанавливаем начальное состояние
-        });
-    </script>
-}
+                modeSelect.addEventListener('change', toggleInputs);
+                toggleInputs(); // Устанавливаем начальное состояние
+            });
+        </script>
+    }
+</div>

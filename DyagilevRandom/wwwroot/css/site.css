@@ -107,3 +107,21 @@ input[type="submit"] {
         font-size: 1.5rem;
     }
 }
+.gif-container {
+    display: flex; /* Используем flexbox для симметричного размещения */
+    justify-content: space-between; /* Распределяем пространство между изображениями */
+    margin: 20px 0; /* Отступ сверху и снизу */
+}
+
+.gif-image {
+    width: 100px; /* Устанавливаем фиксированную ширину для изображений */
+    height: auto; /* Автоматическая высота для пропорциональности */
+    border: 3px solid #ff5722; /* Оранжевая рамка вокруг GIF */
+    border-radius: 10px; /* Закругленные края */
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Тень для изображения */
+    transition: transform 0.3s; /* Плавный переход для увеличения при наведении */
+}
+
+    .gif-image:hover {
+        transform: scale(1.1); /* Увеличение при наведении */
+    }
