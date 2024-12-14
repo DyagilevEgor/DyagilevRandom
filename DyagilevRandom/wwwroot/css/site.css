@@ -1,35 +1,109 @@
+body {
+    font-family: 'Courier New', Courier, monospace; /* Моноширинный шрифт, подобный старым интерфейсам */
+    background-color: #0b0b0b; /* Темный фон для ретро-стиля */
+    color: #e6e6e6; /* Светлый цвет текста */
+    padding: 20px;
+    margin: 0;
+}
+
 h1 {
-    color: #007BFF;
+    font-size: 2.5rem;
+    text-align: center;
+    color: #ff0055; /* Ярко-розовый для заголовка */
+    text-shadow: 2px 2px #ffcc00; /* Тень для заголовка */
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 20px;
+    background-color: #ff0044; /* Ярко-красный фон для контента */
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.3); /* Белая тень для текста */
 }
 
 form {
-    margin: 20px 0;
+    background-color: #222; /* Темный фон формы */
     padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border: 5px dashed #ffbb00; /* Дашевая рамка в неоновом стиле */
+    border-radius: 10px;
+    max-width: 400px;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(255, 170, 0, 0.7); /* Яркая тень */
 }
 
 label {
+    font-size: 1.2rem;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffcc00; /* Жёлтый для текста */
 }
 
 input[type="number"],
-input[type="text"] {
-    width: 100%;
+input[type="text"],
+select {
+    width: calc(100% - 22px); /* ширина с учетом отступов */
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
+    background-color: #333; /* Темный фон для полей ввода */
+    color: #fff; /* Светлый цвет текста внутри полей */
+    border: 2px solid #ffbb00; /* Неоновая рамка */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, background-color 0.3s; /* Плавный переход */
 }
 
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    select:focus {
+        border-color: #ff0055; /* Цвет рамки при фокусе */
+        background-color: #444; /* Изменение фона при фокусе */
+    }
+
 input[type="submit"] {
-    background-color: #007BFF;
+    background-color: #ff0044; /* Яркая кнопка */
     color: white;
     border: none;
     padding: 10px 15px;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s; /* Плавный переход */
+    font-size: 1.1rem;
+    display: block;
+    margin: 0 auto;
 }
 
     input[type="submit"]:hover {
-        background-color: #0056b3;
+        background-color: #e60039; /* Темнее при наведении */
+        transform: scale(1.05); /* Увеличение кнопки */
     }
+
+#rangeInputs,
+#listInputs {
+    display: none; /* По умолчанию скрыть */
+}
+
+.container {
+    text-align: center; /* Центрируем содержимое */
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+    }
+
+    form {
+        max-width: 100%; /* Максимальная ширина формы на мобильных устройствах */
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+}
